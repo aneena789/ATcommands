@@ -1,0 +1,22 @@
+AT+CMEE=2 enables detailed error codes instead of just “ERROR”. It helps us understand how to interpret ERROR and +CME ERROR responses.
+
+AT+CMEE=2
+Expected Response: OK
+Actual Response: ERROR (indicates that CelerSMS does not support verbose error reporting)
+
+Error testing can still be performed by sending invalid commands such as:
+AT+ABC
++CME ERROR: 4
+CME ERROR: 4 = Operation not supported
+
+AT+CMGF=3
++CME ERROR: 3
+CME ERROR: 3 = Operation not allowed (Only 0 or 1 are valid modes)
+
+AT+CMGS
++CME ERROR: 50
+CME ERROR: 50 = Incorrect parameters
+
+AT+XYZ123
++CME ERROR: 100
+CME ERROR: 100 = Unknown error or command not recognized
